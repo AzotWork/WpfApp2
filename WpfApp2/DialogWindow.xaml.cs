@@ -19,13 +19,13 @@ namespace WpfApp2
     /// </summary>
     public partial class DialogWindow : Window
     {
-        //public Entity Entity { get; private set; }
-        public DialogWindow(/*Entity entity*/)
+        public Entity Entity { get; private set; }
+        public DialogWindow(Entity entity)
         {
             InitializeComponent();
-            //Entity = entity;
-            
-            //this.DataContext = Entity;
+            Entity = entity;
+
+            DataGrid1.DataContext = entity.GetType();
         }
         private void Accept_Click(object sender, RoutedEventArgs e)
         {

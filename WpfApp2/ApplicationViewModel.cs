@@ -48,22 +48,22 @@ namespace WpfApp2
             Employees = db.Employees.Local.ToBindingList();
         }
 
-        //internal RelayCommand AddCommand
-        //{
-        //    get
-        //    {
-        //        return addCommand ?? (addCommand = new RelayCommand((o) =>
-        //        {
-        //            DialogWindow dialogWindow = new DialogWindow(new Phone());
-        //            if (dialogWindow.ShowDialog() ==true)
-        //            {
-        //                Object obj = dialogWindow.Entity;
-        //                db.Phones.Add(obj as Phone);
-        //                db.SaveChanges();
-        //            }
-        //        }));
-        //    }
-        //}
+        internal RelayCommand AddCommand
+        {
+            get
+            {
+                return addCommand ?? (addCommand = new RelayCommand((o) =>
+                {
+                    DialogWindow dialogWindow = new DialogWindow(new Entity());
+                    if (dialogWindow.ShowDialog() == true)
+                    {
+                        
+                        db.Phones.Add( dialogWindow.Entity as Phone);
+                        db.SaveChanges();
+                    }
+                }));
+            }
+        }
 
         //internal RelayCommand EditCommand
         // {

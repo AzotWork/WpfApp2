@@ -30,7 +30,7 @@ namespace WpfApp2
             
             applicationViewModel = new ApplicationViewModel();
             DataContext = applicationViewModel;
-            //AddButton.Command = applicationViewModel.AddCommand;
+            AddButton.Command = applicationViewModel.AddCommand;
             //EditButton.Command = applicationViewModel.EditCommand;
             //DeleteButton.Command = applicationViewModel.DeleteCommand;
 

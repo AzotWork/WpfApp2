@@ -8,22 +8,22 @@ using System.Runtime.CompilerServices;
 
 namespace WpfApp2
 {
-    //public class Entity : INotifyPropertyChanged
-    //{
-    //    public virtual string Id { get; set; }
-    //    public event PropertyChangedEventHandler PropertyChanged;
-    //     protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-    //    {
-    //        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    //    }
-    //}
-    public class Phone : INotifyPropertyChanged
+    public class Entity : INotifyPropertyChanged
+    {
+        public int Id { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+    public class Phone : Entity
     {
         string title;
         string company;
         int price;
         
-        public int Id { get; set; } 
+        new public int Id { get; set; } 
         public string Title
         {
             get => title;
@@ -52,9 +52,9 @@ namespace WpfApp2
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        new public event PropertyChangedEventHandler PropertyChanged;
 
-        void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        new void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
