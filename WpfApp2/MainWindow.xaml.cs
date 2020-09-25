@@ -30,9 +30,9 @@ namespace WpfApp2
             
             applicationViewModel = new ApplicationViewModel();
             DataContext = applicationViewModel;
-            AddButton.Command = applicationViewModel.AddCommand;
-            EditButton.Command = applicationViewModel.EditCommand;
-            DeleteButton.Command = applicationViewModel.DeleteCommand;
+            //AddButton.Command = applicationViewModel.AddCommand;
+            //EditButton.Command = applicationViewModel.EditCommand;
+            //DeleteButton.Command = applicationViewModel.DeleteCommand;
 
             //db = new ApplicationContext();
             //db.Phones.Load();

@@ -3,9 +3,9 @@ using System.Data.Entity;
 
 namespace WpfApp2
 {
-    public class Db:DbContext
+    public class ApplicationContext:DbContext
     {
-        public Db():base("DefaultConnection")
+        public ApplicationContext():base("DefaultConnection")
         { 
         }
         public DbSet<Phone> Phones { get; set; }

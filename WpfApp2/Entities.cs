@@ -8,22 +8,22 @@ using System.Runtime.CompilerServices;
 
 namespace WpfApp2
 {
-    public class Entity : INotifyPropertyChanged
-    {
-        public string Id { get; set; }
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
-    public class Phone : Entity
+    //public class Entity : INotifyPropertyChanged
+    //{
+    //    public virtual string Id { get; set; }
+    //    public event PropertyChangedEventHandler PropertyChanged;
+    //     protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+    //    {
+    //        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    //    }
+    //}
+    public class Phone : INotifyPropertyChanged
     {
         string title;
         string company;
         int price;
         
-       
+        public int Id { get; set; } 
         public string Title
         {
             get => title;
@@ -51,11 +51,16 @@ namespace WpfApp2
                 OnPropertyChanged(nameof(Price));
             }
         }
-        
 
-        
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
     }
-    public class Employee : Entity
+    public class Employee : INotifyPropertyChanged
     {
         string firstName;
         string lastName;
@@ -64,7 +69,7 @@ namespace WpfApp2
         int sex;
         int department;
 
-      
+        public string Id { get; set; }
         public string FirstName
         {
             get => firstName;
@@ -118,14 +123,20 @@ namespace WpfApp2
                 department = value;
                 OnPropertyChanged(nameof(Department));
             }
-        }        
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
-    public class Department : Entity
+    public class Department : INotifyPropertyChanged
     {
         string name;
         int director;
         
-       
+       public string Id { get; set; }
         public string Name
         {
             get => name;
@@ -144,13 +155,30 @@ namespace WpfApp2
                 OnPropertyChanged(nameof(Director));
             }
         }
-        
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
-    public class Order: Entity
+    public class Order: INotifyPropertyChanged
     {
         string itemName;
-        new public int Id { get; set; }
-             
+         public int Id { get; set; }
+        public string ItemName { get => itemName;
+            set 
+            {
+                itemName = value;
+                OnPropertyChanged(nameof(ItemName));
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
 

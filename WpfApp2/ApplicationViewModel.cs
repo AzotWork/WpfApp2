@@ -13,7 +13,7 @@ namespace WpfApp2
 {
     public class ApplicationViewModel : INotifyPropertyChanged
     {
-        Db db;
+        ApplicationContext db;
         RelayCommand addCommand;
         RelayCommand editCommand;
         RelayCommand deleteCommand;
@@ -41,68 +41,68 @@ namespace WpfApp2
 
         public ApplicationViewModel()
         {
-            db = new Db();
+            db = new ApplicationContext();
             db.Phones.Load();
             Phones = db.Phones.Local.ToBindingList();
             db.Employees.Load();
             Employees = db.Employees.Local.ToBindingList();
         }
 
-        internal RelayCommand AddCommand
-        {
-            get
-            {
-                return addCommand ?? (addCommand = new RelayCommand((o) =>
-                {
-                    DialogWindow dialogWindow = new DialogWindow(new Phone());
-                    if (dialogWindow.ShowDialog() ==true)
-                    {
-                        Object obj = dialogWindow.Entity;
-                        db.Phones.Add(obj as Phone);
-                        db.SaveChanges();
-                    }
-                }));
-            }
-        }
+        //internal RelayCommand AddCommand
+        //{
+        //    get
+        //    {
+        //        return addCommand ?? (addCommand = new RelayCommand((o) =>
+        //        {
+        //            DialogWindow dialogWindow = new DialogWindow(new Phone());
+        //            if (dialogWindow.ShowDialog() ==true)
+        //            {
+        //                Object obj = dialogWindow.Entity;
+        //                db.Phones.Add(obj as Phone);
+        //                db.SaveChanges();
+        //            }
+        //        }));
+        //    }
+        //}
 
-        internal RelayCommand EditCommand
-        {
-            get
-            {
-                return editCommand ?? (editCommand = new RelayCommand((selectedItem) => 
-                {
-                    if (selectedItem == null) return;
+        //internal RelayCommand EditCommand
+        // {
+        //     get
+        //     {
+        //         return editCommand ?? (editCommand = new RelayCommand((selectedItem) => 
+        //         {
+        //             if (selectedItem == null) return;
 
-                    Entity entity = selectedItem as Entity;
-                    DialogWindow dialogWindow = new DialogWindow(entity);
+        //             Entity entity = selectedItem as Entity;
+        //             DialogWindow dialogWindow = new DialogWindow(entity);
 
-                    if(dialogWindow.ShowDialog()==true)
-                    {
-                        entity = db.Phones.Find(dialogWindow.Entity.Id);
-                        if(entity!=null)
-                        {
-                            entity = dialogWindow.Entity;
-                            db.Entry(entity).State = EntityState.Modified;
-                            db.SaveChanges();
-                        }
-                    }
-                }));
-            }
-        }
-        internal RelayCommand DeleteCommand
-        {
-            get => deleteCommand ?? (deleteCommand = new RelayCommand((selectedItem) =>
-            {
-                if (selectedItem == null) return;             
-                Entity entity = selectedItem as Entity;
-                if (MessageBox.Show($"Delete {entity.ToString()} from DataBase?","Deleting?",MessageBoxButton.OKCancel) != MessageBoxResult.OK) return;
-                
-                db.Phones.Remove(entity as Phone);
-                db.SaveChanges();
-            }));
-        }
+        //             if(dialogWindow.ShowDialog()==true)
+        //             {
+        //                 entity = db.Phones.Find(dialogWindow.Entity.Id);
+        //                 if(entity!=null)
+        //                 {
+        //                     entity = dialogWindow.Entity;
+        //                     db.Entry(entity).State = EntityState.Modified;
+        //                     db.SaveChanges();
+        //                 }
+        //             }
+        //         }));
+        //     }
+        // }
+        //    //internal RelayCommand DeleteCommand
+        //    {
+        //        get => deleteCommand ?? (deleteCommand = new RelayCommand((selectedItem) =>
+        //        {
+        //            if (selectedItem == null) return;             
+        //            Entity entity = selectedItem as Entity;
+        //            if (MessageBox.Show($"Delete {entity.ToString()} from DataBase?","Deleting?",MessageBoxButton.OKCancel) != MessageBoxResult.OK) return;
 
-        void OnPropertyChanged([CallerMemberName]string propertyName = null)
+        //            db.Phones.Remove(entity as Phone);
+        //            db.SaveChanges();
+        //        }));
+        //    }
+
+        void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
