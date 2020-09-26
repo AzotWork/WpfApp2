@@ -21,7 +21,8 @@ namespace WpfApp2
     /// </summary>
     public partial class MainWindow : Window
     {
-        //ApplicationContext db;
+        
+        public string SelectedTabItemName { get; set; }
         ApplicationViewModel applicationViewModel;
         public MainWindow()
         {
@@ -30,13 +31,15 @@ namespace WpfApp2
             
             applicationViewModel = new ApplicationViewModel();
             DataContext = applicationViewModel;
-            AddButton.Command = applicationViewModel.AddCommand;
-            //EditButton.Command = applicationViewModel.EditCommand;
-            //DeleteButton.Command = applicationViewModel.DeleteCommand;
 
-            //db = new ApplicationContext();
-            //db.Phones.Load();
-            //this.DataContext = db.Phones.Local.ToBindingList();
+            
+            
+
+            AddButton1.Command = applicationViewModel.AddCommand1;
+            EditButton1.Command = applicationViewModel.EditCommand1;
+            DeleteButton1.Command = applicationViewModel.DeleteCommand1;
+
+            
         }
         //void Add_Click(object sender, RoutedEventArgs e)
         //{

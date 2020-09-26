@@ -17,13 +17,13 @@ namespace WpfApp2
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    public class Phone : Entity
+    public class Phone : INotifyPropertyChanged
     {
         string title;
         string company;
         int price;
         
-        new public int Id { get; set; } 
+        public int Id { get; set; } 
         public string Title
         {
             get => title;
@@ -52,9 +52,9 @@ namespace WpfApp2
             }
         }
 
-        new public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        new void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

@@ -1,4 +1,4 @@
-﻿<Window x:Class="WpfApp2.DialogWindow"
+﻿<Window x:Class="WpfApp2.DialogWindow1"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -25,7 +25,9 @@
             <!--<ColumnDefinition Width="100"/>-->
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <DataGridColumnHeader x:Name="DataGrid1"/>
+        <DataGrid x:Name="DataGrid1" >
+            
+        </DataGrid>
         <!--<TextBlock Text="Модель" />
         <TextBlock Text="Производитель" Grid.Row="1" />
         <TextBlock Text="Цена" Grid.Row="2" />

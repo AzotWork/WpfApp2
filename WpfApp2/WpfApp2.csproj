@@ -90,15 +90,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="DialogWindow.xaml">
+    <Page Include="DialogWindow1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities.cs" />
-    <Compile Include="DialogWindow.xaml.cs">
-      <DependentUpon>DialogWindow.xaml</DependentUpon>
+    <Compile Include="DialogWindow1.xaml.cs">
+      <DependentUpon>DialogWindow1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

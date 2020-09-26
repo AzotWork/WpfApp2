@@ -19,7 +19,7 @@ namespace WpfApp2
         RelayCommand deleteCommand;
         IEnumerable<Phone> phones;
         IEnumerable<Employee> employees;
-
+        MainWindow mainWindow;
         public IEnumerable<Phone> Phones
         {
             get => phones;
@@ -38,7 +38,7 @@ namespace WpfApp2
                 OnPropertyChanged(nameof(Employees));
             }
         }
-
+        
         public ApplicationViewModel()
         {
             db = new ApplicationContext();
@@ -46,63 +46,68 @@ namespace WpfApp2
             Phones = db.Phones.Local.ToBindingList();
             db.Employees.Load();
             Employees = db.Employees.Local.ToBindingList();
+            
+
+
         }
 
-        internal RelayCommand AddCommand
+        internal RelayCommand AddCommand1
         {
             get
             {
                 return addCommand ?? (addCommand = new RelayCommand((o) =>
                 {
-                    DialogWindow dialogWindow = new DialogWindow(new Entity());
+
+                    DialogWindow1 dialogWindow =  new DialogWindow1(new Phone());                           
+                    
                     if (dialogWindow.ShowDialog() == true)
                     {
                         
-                        db.Phones.Add( dialogWindow.Entity as Phone);
+                        db.Phones.Add( dialogWindow.Phone);
                         db.SaveChanges();
                     }
                 }));
             }
         }
 
-        //internal RelayCommand EditCommand
-        // {
-        //     get
-        //     {
-        //         return editCommand ?? (editCommand = new RelayCommand((selectedItem) => 
-        //         {
-        //             if (selectedItem == null) return;
+        internal RelayCommand EditCommand1
+        {
+            get
+            {
+                return editCommand ?? (editCommand = new RelayCommand((selectedItem) =>
+                {
+                    if (selectedItem == null) return;
 
-        //             Entity entity = selectedItem as Entity;
-        //             DialogWindow dialogWindow = new DialogWindow(entity);
+                    Phone phone = selectedItem as Phone;
+                    DialogWindow1 dialogWindow = new DialogWindow1(phone);
 
-        //             if(dialogWindow.ShowDialog()==true)
-        //             {
-        //                 entity = db.Phones.Find(dialogWindow.Entity.Id);
-        //                 if(entity!=null)
-        //                 {
-        //                     entity = dialogWindow.Entity;
-        //                     db.Entry(entity).State = EntityState.Modified;
-        //                     db.SaveChanges();
-        //                 }
-        //             }
-        //         }));
-        //     }
-        // }
-        //    //internal RelayCommand DeleteCommand
-        //    {
-        //        get => deleteCommand ?? (deleteCommand = new RelayCommand((selectedItem) =>
-        //        {
-        //            if (selectedItem == null) return;             
-        //            Entity entity = selectedItem as Entity;
-        //            if (MessageBox.Show($"Delete {entity.ToString()} from DataBase?","Deleting?",MessageBoxButton.OKCancel) != MessageBoxResult.OK) return;
+                    if (dialogWindow.ShowDialog() == true)
+                    {
+                        phone = db.Phones.Find(dialogWindow.Phone.Id);
+                        if (phone != null)
+                        {
+                            phone = dialogWindow.Phone;
+                            db.Entry(phone).State = EntityState.Modified;
+                            db.SaveChanges();
+                        }
+                    }
+                }));
+            }
+        }
+            internal RelayCommand DeleteCommand1
+            {
+                get => deleteCommand ?? (deleteCommand = new RelayCommand((selectedItem) =>
+                {
+            if (selectedItem == null) return;
+            Phone phone = selectedItem as Phone;
+            if (MessageBox.Show($"Delete {phone.ToString()} from DataBase?", "Deleting?", MessageBoxButton.OKCancel) != MessageBoxResult.OK) return;
 
-        //            db.Phones.Remove(entity as Phone);
-        //            db.SaveChanges();
-        //        }));
-        //    }
+            db.Phones.Remove(phone);
+            db.SaveChanges();
+        }));
+            }
 
-        void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));

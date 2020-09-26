@@ -8,8 +8,8 @@ namespace WpfApp2
 {
     class RelayCommand: ICommand
     {
-        Action<object> execute;
-        Func<object, bool> canExecute;
+        readonly Action<object> execute;
+        readonly Func<object, bool> canExecute;
 
         public event EventHandler CanExecuteChanged
         {

@@ -17,15 +17,15 @@ namespace WpfApp2
     /// <summary>
     /// Логика взаимодействия для PhoneWindow.xaml
     /// </summary>
-    public partial class DialogWindow : Window
+    public partial class DialogWindow1 : Window
     {
-        public Entity Entity { get; private set; }
-        public DialogWindow(Entity entity)
+        public Phone Phone { get; private set; }
+        public DialogWindow1(Phone phone)
         {
             InitializeComponent();
-            Entity = entity;
+            Phone = phone;
 
-            DataGrid1.DataContext = entity.GetType();
+            DataGrid1.DataContext = Phone;
         }
         private void Accept_Click(object sender, RoutedEventArgs e)
         {
