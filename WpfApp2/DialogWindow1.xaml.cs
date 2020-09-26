@@ -25,7 +25,7 @@ namespace WpfApp2
             InitializeComponent();
             Phone = phone;
 
-            DataGrid1.DataContext = Phone;
+            DataContext = Phone;
         }
         private void Accept_Click(object sender, RoutedEventArgs e)
         {

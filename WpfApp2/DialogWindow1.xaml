@@ -16,24 +16,24 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <!--<RowDefinition/>
-            <RowDefinition/>-->
+            <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <!--<ColumnDefinition Width="100"/>-->
+            <ColumnDefinition Width="100"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="DataGrid1" >
+        <!--<DataGrid x:Name="DataGrid1" >-->
             
-        </DataGrid>
-        <!--<TextBlock Text="Модель" />
+        <!--</DataGrid>-->
+        <TextBlock Text="Модель" />
         <TextBlock Text="Производитель" Grid.Row="1" />
         <TextBlock Text="Цена" Grid.Row="2" />
         <TextBox Text="{Binding Title}" Grid.Column="1" />
         <TextBox Text="{Binding Company}" Grid.Column="1" Grid.Row="1" />
-        <TextBox Text="{Binding Price}" Grid.Column="1" Grid.Row="2" />-->
+        <TextBox Text="{Binding Price}" Grid.Column="1" Grid.Row="2" />
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1" Height="50">
             <Button IsDefault="True" Click="Accept_Click" MinWidth="60" Margin="5" Content="ОК"/>
             <Button IsCancel="True" MinWidth="60" Margin="5" Content="Отмена"/>
