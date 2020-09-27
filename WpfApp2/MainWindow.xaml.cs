@@ -36,7 +36,7 @@ namespace WpfApp2
             EditButton1.Command = applicationViewModel.EditCommand1;
             DeleteButton1.Command = applicationViewModel.DeleteCommand1;
 
-            
+            AddButton2.Command = applicationViewModel.AddCommand2;
         }
         //void Add_Click(object sender, RoutedEventArgs e)
         //{

@@ -19,7 +19,8 @@ namespace WpfApp2
         RelayCommand deleteCommand;
         IEnumerable<Phone> phones;
         IEnumerable<Employee> employees;
-        MainWindow mainWindow;
+        IEnumerable<Department> departments;
+        IEnumerable<Order> orders;
         public IEnumerable<Phone> Phones
         {
             get => phones;
@@ -38,7 +39,24 @@ namespace WpfApp2
                 OnPropertyChanged(nameof(Employees));
             }
         }
-        
+        public IEnumerable<Department> Departments
+        {
+            get => departments;
+            set
+            {
+                departments = value;
+                OnPropertyChanged(nameof(Departments));
+            }
+        }
+        public IEnumerable<Order> Orders
+        {
+            get => orders;
+            set
+            {
+                orders = value;
+                OnPropertyChanged(nameof(Orders));
+            }
+        }
         public ApplicationViewModel()
         {
             db = new ApplicationContext();
@@ -46,7 +64,8 @@ namespace WpfApp2
             Phones = db.Phones.Local.ToBindingList();
             db.Employees.Load();
             Employees = db.Employees.Local.ToBindingList();
-            
+            db.Departments.Load();
+            Departments = db.Departments.Local.ToBindingList();
 
 
         }
@@ -58,7 +77,7 @@ namespace WpfApp2
                 return addCommand ?? (addCommand = new RelayCommand((o) =>
                 {
 
-                    DialogWindow1 dialogWindow =  new DialogWindow1(new Phone());                           
+                    DialogWindow1 dialogWindow =  new DialogWindow1(new Phone("","",0));                           
                     
                     if (dialogWindow.ShowDialog() == true)
                     {
@@ -69,7 +88,24 @@ namespace WpfApp2
                 }));
             }
         }
+        internal RelayCommand AddCommand2
+        {
+            get
+            {
+                return addCommand ?? (addCommand = new RelayCommand((o) =>
+                {
 
+                    DialogWindow1 dialogWindow = new DialogWindow1(new Employee());
+
+                    if (dialogWindow.ShowDialog() == true)
+                    {
+
+                        db.Employees.Add(dialogWindow.Employee);
+                        db.SaveChanges();
+                    }
+                }));
+            }
+        }
         internal RelayCommand EditCommand1
         {
             get

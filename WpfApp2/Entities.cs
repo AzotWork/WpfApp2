@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Data.Entity;
 
 namespace WpfApp2
 {
@@ -22,7 +23,13 @@ namespace WpfApp2
         string title;
         string company;
         int price;
-        
+        public Phone() { }
+        public Phone(string title , string company, int price )
+        {
+            Title = title;
+            Company = company;
+            Price = price;
+        }
         public int Id { get; set; } 
         public string Title
         {
@@ -69,7 +76,7 @@ namespace WpfApp2
         int sex;
         int department;
 
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string FirstName
         {
             get => firstName;
@@ -115,6 +122,7 @@ namespace WpfApp2
                 OnPropertyChanged(nameof(Sex));
             }
         }
+        
         public int Department
         {
             get => department;
@@ -136,7 +144,7 @@ namespace WpfApp2
         string name;
         int director;
         
-       public string Id { get; set; }
+       public int Id { get; set; }
         public string Name
         {
             get => name;
@@ -165,7 +173,7 @@ namespace WpfApp2
     public class Order: INotifyPropertyChanged
     {
         string itemName;
-         public int Id { get; set; }
+        public int Id { get; set; }
         public string ItemName { get => itemName;
             set 
             {
