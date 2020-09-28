@@ -23,13 +23,7 @@ namespace WpfApp2
         string title;
         string company;
         int price;
-        public Phone() { }
-        public Phone(string title , string company, int price )
-        {
-            Title = title;
-            Company = company;
-            Price = price;
-        }
+      
         public int Id { get; set; } 
         public string Title
         {

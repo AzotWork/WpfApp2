@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,23 +15,18 @@ using System.Windows.Shapes;
 namespace WpfApp2
 {
     /// <summary>
-    /// Логика взаимодействия для PhoneWindow.xaml
+    /// Логика взаимодействия для DialogWindow4.xaml
     /// </summary>
-    public partial class DialogWindow1 : Window
+    public partial class DialogWindow4 : Window
     {
-        public Phone Phone { get; private set; } 
-        
-        
-        public DialogWindow1(Phone phone)
+        public Order Order { get; private set; }
+        public DialogWindow4(Order order)
         {
             InitializeComponent();
-            Phone = phone;
+            Order = order;
 
-            DataContext = Phone;
-            
-            
+            DataContext = Order;
         }
-      
         private void Accept_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;

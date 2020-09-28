@@ -17,21 +17,22 @@ namespace WpfApp2
     /// <summary>
     /// Логика взаимодействия для PhoneWindow.xaml
     /// </summary>
-    public partial class DialogWindow1 : Window
+    public partial class DialogWindow2 : Window
     {
-        public Phone Phone { get; private set; } 
         
         
-        public DialogWindow1(Phone phone)
+        public Employee Employee { get; private set; }
+       
+        public DialogWindow2(Employee employee)
         {
             InitializeComponent();
-            Phone = phone;
+            Employee = employee;
 
-            DataContext = Phone;
-            
-            
+            DataContext = Employee;
+            if (radioButtonM.IsChecked == true)
+                Employee.Sex = 1;
+            else Employee.Sex = 0;
         }
-      
         private void Accept_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;

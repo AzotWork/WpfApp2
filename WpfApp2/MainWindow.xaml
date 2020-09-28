@@ -61,6 +61,23 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
+            
+            <TabItem Header="Заказы" x:Name="ordersTabItem">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid x:Name="ordersDataGrid" ItemsSource="{Binding Orders}" IsReadOnly="True" RowHeight="20"/>
+                    <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" >
+                        <Button x:Name="AddButton4" Content="Add" Margin="10"  />
+                        <Button  x:Name="EditButton4" Content="Edit"  Margin="10" 
+                    CommandParameter="{Binding ElementName=ordersDataGrid, Path=SelectedItem}"/>
+                        <Button x:Name="DeleteButton4" Content="Delete"  Margin="10" 
+                    CommandParameter="{Binding ElementName=ordersDataGrid, Path=SelectedItem}"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
         </TabControl>
         
     </Grid>

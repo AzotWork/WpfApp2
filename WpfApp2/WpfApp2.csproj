@@ -75,8 +75,29 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ApplicationViewModel.cs" />
+    <Compile Include="DialogWindowEmployee.xaml.cs">
+      <DependentUpon>DialogWindowEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DialogWindowDepartment.xaml.cs">
+      <DependentUpon>DialogWindowDepartment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DialogWindowOrder.xaml.cs">
+      <DependentUpon>DialogWindowOrder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="RelayCommand.cs" />
+    <Page Include="DialogWindowEmployee.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DialogWindowDepartment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DialogWindowOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

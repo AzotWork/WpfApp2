@@ -36,44 +36,18 @@ namespace WpfApp2
             EditButton1.Command = applicationViewModel.EditCommand1;
             DeleteButton1.Command = applicationViewModel.DeleteCommand1;
 
-            AddButton2.Command = applicationViewModel.AddCommand2;
+            AddButton2.Command = applicationViewModel.AddCommandEmployee;
+            EditButton2.Command = applicationViewModel.EditCommandEmployee;
+            DeleteButton2.Command = applicationViewModel.DeleteCommandEmployee;
+
+            AddButton3.Command = applicationViewModel.AddCommand3;
+            EditButton3.Command = applicationViewModel.EditCommand3;
+            DeleteButton3.Command = applicationViewModel.DeleteCommand3;
+
+            AddButton4.Command = applicationViewModel.AddCommand4;
+            EditButton4.Command = applicationViewModel.EditCommand4;
+            DeleteButton4.Command = applicationViewModel.DeleteCommand4;
         }
-        //void Add_Click(object sender, RoutedEventArgs e)
-        //{
-        //    PhoneWindow phoneWindow = new PhoneWindow(new Phone());
-        //    if(phoneWindow.ShowDialog()==true)
-        //    {
-        //        Phone phone = phoneWindow.Phone;
-        //        db.Phones.Add(phone);
-        //        db.SaveChanges();
-        //    }
-        //}
-        //void Edit_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (phonesList.SelectedItem == null) return;
-
-        //    Phone phone = phonesList.SelectedItem as Phone;
-        //    PhoneWindow phoneWindow = new PhoneWindow(phone);
-
-        //    if(phoneWindow.ShowDialog() == true)
-        //    {
-        //        phone = db.Phones.Find(phoneWindow.Phone.Id);
-        //        if(phone!=null)
-        //        {
-        //            phone.Company = phoneWindow.Phone.Company;
-        //            phone.Title = phoneWindow.Phone.Title;
-        //            phone.Price = phoneWindow.Phone.Price;
-        //            db.Entry(phone).State = EntityState.Modified;
-        //            db.SaveChanges();
-        //        }
-        //    }
-        //}
-        //void Delete_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (phonesList.SelectedItem == null) return;
-        //    Phone phone = phonesList.SelectedItem as Phone;
-        //    db.Phones.Remove(phone);
-        //    db.SaveChanges();
-        //}
+        
     }
 }
