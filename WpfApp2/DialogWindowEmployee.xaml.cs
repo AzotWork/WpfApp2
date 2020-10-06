@@ -14,9 +14,7 @@ using System.Windows.Shapes;
 
 namespace WpfApp2
 {
-    /// <summary>
-    /// Логика взаимодействия для PhoneWindow.xaml
-    /// </summary>
+    
     public partial class DialogWindow2 : Window
     {
         
@@ -27,14 +25,18 @@ namespace WpfApp2
         {
             InitializeComponent();
             Employee = employee;
-
+            if (employee.Sex == 1) radioButtonM.IsChecked = true;
+            if (employee.Sex == 0) radioButtonF.IsChecked = true;
             DataContext = Employee;
-            if (radioButtonM.IsChecked == true)
-                Employee.Sex = 1;
-            else Employee.Sex = 0;
+            birthDate.SelectedDate =  Convert.ToDateTime(employee.BirthDate).Date;
         }
         private void Accept_Click(object sender, RoutedEventArgs e)
         {
+            if (radioButtonM.IsChecked == true)
+                Employee.Sex = 1;
+            else Employee.Sex = 0;
+
+            Employee.BirthDate = birthDate.SelectedDate.Value.Date.ToString("d");
             this.DialogResult = true;
         }
     }

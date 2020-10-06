@@ -13,10 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace WpfApp2
-{
-    /// <summary>
-    /// Логика взаимодействия для DialogWindow3.xaml
-    /// </summary>
+{    
     public partial class DialogWindow3 : Window
     {
         public Department Department { get; private set; }

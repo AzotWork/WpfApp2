@@ -66,7 +66,7 @@ namespace WpfApp2
         string firstName;
         string lastName;
         string middleName;
-        int birthDate;
+        string birthDate;
         int sex;
         int department;
 
@@ -98,7 +98,7 @@ namespace WpfApp2
                 OnPropertyChanged(nameof(MiddleName));
             }
         }
-        public int BirthDate
+        public string BirthDate
         {
             get => birthDate;
             set
@@ -167,12 +167,22 @@ namespace WpfApp2
     public class Order: INotifyPropertyChanged
     {
         string itemName;
+        int employee;
         public int Id { get; set; }
         public string ItemName { get => itemName;
             set 
             {
                 itemName = value;
                 OnPropertyChanged(nameof(ItemName));
+            }
+        }
+        public int Employee
+        {
+            get => employee;
+            set
+            {
+                employee = value;
+                OnPropertyChanged(nameof(Employee));
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;

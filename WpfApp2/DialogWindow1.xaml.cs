@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace WpfApp2
 {
-    /// <summary>
-    /// Логика взаимодействия для PhoneWindow.xaml
-    /// </summary>
     public partial class DialogWindow1 : Window
     {
         public Phone Phone { get; private set; } 
